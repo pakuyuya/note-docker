@@ -1,0 +1,1 @@
+nginx + php-fpmしようとしてphp-fpmが動かなかった夢の残骸

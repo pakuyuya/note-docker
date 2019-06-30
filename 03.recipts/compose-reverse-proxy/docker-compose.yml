@@ -1,0 +1,11 @@
+revproxy:
+  build: revproxy
+  ports:
+    - "80:80"
+  links:
+    - nginx
+
+nginx:
+  build: nginx
+  ports:
+    - "8080:8080"
