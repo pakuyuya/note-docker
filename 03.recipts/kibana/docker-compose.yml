@@ -1,0 +1,31 @@
+version: '3'
+services:
+  kibana:
+    image: kibana:7.3.0
+    links:
+      - es:elasticsearch
+    ports:
+      - 5601:5601
+    networks:
+      - kibananet
+  es:
+    build: ./es
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+      - ./es/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es/log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties
+    ports:
+      - 9201:9200
+    networks:
+      - kibananet
+
+volumes:
+  esdata:
+    driver: local
+
+networks:
+  kibananet:
