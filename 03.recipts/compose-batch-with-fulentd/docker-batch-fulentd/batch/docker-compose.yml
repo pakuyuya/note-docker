@@ -7,7 +7,7 @@ services:
      - ./local.env
     command: /app/sample-batch -SqlFile /app/sql/BAT0000_update-to-diable-invalid-users.sql
     logging:
-      driver: fluentd
+      driver: "fluentd"
       options:
         fluentd-address: 192.168.10.4:24224
         tag: docker.sample_batch
